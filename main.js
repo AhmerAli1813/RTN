@@ -110,6 +110,8 @@
         });
     });
     /*DatePickerTime End here js*/
+  /*DropDown JS Start here */
+
     $('.dropdown').on('click', function () {
         var icon = $(this).find(".svg-inline--fa.arrow");
 
@@ -118,5 +120,31 @@
         var dropdownId = $(this).data('dropdown');
         $('#' + dropdownId).toggleClass('hide');
     });
+
+/* Function of DropDown */
+        function ShowSettingDiv(selector, type) {
+            console.log("Selector on click", selector);
+            if (type == "click") {
+
+                var ParentSelector = $(selector).parent().attr('id'); // Get the parent element's ID
+                console.log("ParentSelector", ParentSelector); // Log the parent selector
+
+                var icon = $("#" + ParentSelector).find(".svg-inline--fa.arrow");
+
+                icon.hasClass("fa-angle-down") ? icon.removeClass("fa-angle-down").addClass("fa-angle-up") : icon.removeClass("fa-angle-up").addClass("fa-angle-down");
+            }
+
+            if (type == "click") {
+
+                $(selector).toggle();
+                $(selector).css('margin-top', '-0px');
+            }
+            else {
+                if ($('body').hasClass('sidebar-xs')) {
+                    $(selector).show();
+                    $(selector).css('margin-top', '-40px');
+                }
+            }
+        }
 });
 
