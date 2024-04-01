@@ -147,4 +147,22 @@
             }
         }
 });
+//QR Code Working with angular.js 
+  if (print == true) {
+    
+      var qrCodeImageUrl = 'https://api.qrserver.com/v1/create-qr-code/?data=' + encodeURIComponent(resp.Booking.BCNo); //here given data which one you generate qr code
+      var qrCodeImgElement = document.createElement('img');
+      qrCodeImgElement.src = qrCodeImageUrl;
 
+      // Append the image element to the DOM
+      var qrCodeContainer = document.getElementById("QRCode");
+      if (qrCodeContainer) {
+          qrCodeContainer.innerHTML = ''; // Clear previous contents
+          qrCodeContainer.appendChild(qrCodeImgElement);
+      } else {
+          console.error("QRCode container element not found.");
+      }
+      $timeout(() => {
+          window.print();
+      }, 1000);
+  }
